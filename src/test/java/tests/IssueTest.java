@@ -1,27 +1,19 @@
+package tests;
+
 import dto.Issue;
 import dto.IssueRequest;
+import endpoints.Endpoints;
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import specifications.Specifications;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class IssueTest {
-    private static final String BASE_URL =
-            "http://localhost:8081/api";
-
-    private static String token;
-
-    @BeforeAll
-    public static void setUp() {
-        token = System.getenv("YOUTRACK_TOKEN");
-        assertNotNull(token, "Токен не задан");
-    }
-
+public class IssueTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(

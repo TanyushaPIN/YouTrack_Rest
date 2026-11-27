@@ -1,25 +1,15 @@
+package tests;
+
 import dto.Project;
-import io.restassured.http.ContentType;
-import org.junit.jupiter.api.BeforeAll;
+import endpoints.Endpoints;
 import org.junit.jupiter.api.Test;
+import specifications.Specifications;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class ProjectTest {
-    private static final String BASE_URL =
-            "http://localhost:8081/api";
-
-    private static String token;
-
-    @BeforeAll
-    public static void setUp() {
-        token = System.getenv("YOUTRACK_TOKEN");
-        assertNotNull(token, "Токен не задан");
-    }
-
+public class ProjectTest extends BaseTest{
     //Позитивные тесты
     @Test
     public void testGetProjects() {
